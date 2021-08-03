@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed;
-    private float xBound;
-    private float topYBound;
-    private float bottomYBound;
-    private float zBound;
+    public float speed = 25;
 
     private Rigidbody playerRb;
 
@@ -16,11 +12,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        speed = 10;
-        xBound = 23;
-        topYBound = 50;
-        bottomYBound = 1.5f;
-        zBound = 23;
     }
 
     // Update is called once per frame
@@ -34,30 +25,15 @@ public class PlayerController : MonoBehaviour
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
 
-        transform.Translate(horizontalAxis * speed * Vector3.right * Time.deltaTime);
-        transform.Translate(verticalAxis * speed * Vector3.forward * Time.deltaTime);
-        if (transform.position.x < -xBound || transform.position.x > xBound || transform.position.z < -zBound || transform
-            .position.z > zBound)
-        {
-            transform.Translate(-horizontalAxis * speed * Vector3.right * Time.deltaTime);
-            transform.Translate(-verticalAxis * speed * Vector3.forward * Time.deltaTime);
-        }
+        playerRb.velocity = transform.right * speed * horizontalAxis + transform.forward * speed * verticalAxis;
 
         if (Input.GetKey(KeyCode.Space))
         {
-            transform.Translate(speed * Vector3.up * Time.deltaTime);
-            if (transform.position.y > topYBound)
-            {
-                transform.Translate(-speed * Vector3.up * Time.deltaTime);
-            }
+            playerRb.velocity = Vector3.up * speed;
         }
-        else if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            transform.Translate(speed * Vector3.down * Time.deltaTime);
-            if (transform.position.y < bottomYBound)
-            {
-                transform.Translate(-speed * Vector3.down * Time.deltaTime);
-            }
+            playerRb.velocity = Vector3.down * speed;
         }
     }
 
