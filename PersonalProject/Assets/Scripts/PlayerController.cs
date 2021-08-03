@@ -25,19 +25,22 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        {
-            float horizontalAxis = Input.GetAxis("Horizontal");
-            float verticalAxis = Input.GetAxis("Vertical");
+    {
+        MovePlayer();
+        Interact();
+    }
+    void MovePlayer()
+    {
+        float horizontalAxis = Input.GetAxis("Horizontal");
+        float verticalAxis = Input.GetAxis("Vertical");
 
-            transform.Translate(horizontalAxis * speed * Vector3.right * Time.deltaTime);
-            transform.Translate(verticalAxis * speed * Vector3.forward * Time.deltaTime);
-            if (transform.position.x < -xBound || transform.position.x > xBound || transform.position.z < -zBound || transform
-                .position.z > zBound)
-            {
-                transform.Translate(-horizontalAxis * speed * Vector3.right * Time.deltaTime);
-                transform.Translate(-verticalAxis * speed * Vector3.forward * Time.deltaTime);
-            }
+        transform.Translate(horizontalAxis * speed * Vector3.right * Time.deltaTime);
+        transform.Translate(verticalAxis * speed * Vector3.forward * Time.deltaTime);
+        if (transform.position.x < -xBound || transform.position.x > xBound || transform.position.z < -zBound || transform
+            .position.z > zBound)
+        {
+            transform.Translate(-horizontalAxis * speed * Vector3.right * Time.deltaTime);
+            transform.Translate(-verticalAxis * speed * Vector3.forward * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -56,7 +59,10 @@ public class PlayerController : MonoBehaviour
                 transform.Translate(-speed * Vector3.down * Time.deltaTime);
             }
         }
+    }
 
+    void Interact()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //Interact with the scene
