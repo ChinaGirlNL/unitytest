@@ -45,4 +45,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Clicked (" + Time.time + ")");
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Button"))
+        {
+            Debug.Log("Trigger");
+        }
+    }
 }
