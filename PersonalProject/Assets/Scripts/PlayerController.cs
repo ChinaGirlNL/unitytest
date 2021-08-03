@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         speed = 10;
-        xBound = 25;
+        xBound = 23;
         topYBound = 50;
-        bottomYBound = 0;
-        zBound = 25;
+        bottomYBound = 1.5f;
+        zBound = 23;
     }
 
     // Update is called once per frame
