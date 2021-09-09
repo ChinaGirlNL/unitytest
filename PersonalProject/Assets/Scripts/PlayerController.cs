@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour
     public float speed = 25;
 
     private Rigidbody playerRb;
+    private GameObject focalPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        focalPoint = GameObject.Find("Focal Point");
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
 
-        playerRb.velocity = transform.right * speed * horizontalAxis + transform.forward * speed * verticalAxis;
+        playerRb.velocity = focalPoint.transform.right * speed * horizontalAxis + focalPoint.transform.forward * speed * verticalAxis;
 
         if (Input.GetKey(KeyCode.Space))
         {
