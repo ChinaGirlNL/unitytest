@@ -22,7 +22,7 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !isActivated)
+        if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Object")) && !isActivated)
         {
             door.SetActive(false);
             transform.Translate(Vector3.down * (GetComponent<BoxCollider>().size.y / 2));
@@ -32,7 +32,7 @@ public class Button : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && mustBeHeld && isActivated)
+        if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Object")) && isActivated)
         {
             door.SetActive(true);
             transform.Translate(Vector3.up * (GetComponent<BoxCollider>().size.y / 2));

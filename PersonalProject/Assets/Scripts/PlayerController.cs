@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private GameObject focalPoint;
 
+    public HeldObject heldObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +43,9 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.E))
         {
-            //Interact with the scene
-            Debug.Log("Clicked (" + Time.time + ")");
+            heldObject.disableHold();
         }
     }
 
