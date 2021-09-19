@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private GameObject focalPoint;
+    private GameManager gameManagerScript;
 
     public HeldObject heldObject;
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -51,9 +53,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Button"))
+        if (other.CompareTag("Finish"))
         {
-            Debug.Log("Trigger");
+            gameManagerScript.ResetEscaperoom();
         }
     }
 }

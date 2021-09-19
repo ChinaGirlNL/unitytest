@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,5 +15,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ResetEscaperoom()
+    {
+        Scene escaperoom = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(escaperoom.name);
     }
 }
