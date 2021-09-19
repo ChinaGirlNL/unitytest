@@ -1449,6 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f81aad3c664f145abb77e9aff2c952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 1598549623}
 --- !u!1 &1278525367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1677,7 @@ MonoBehaviour:
   door: {fileID: 1598549623}
   mustBeHeld: 1
   isActivated: 0
+  longHoldTime: 1
 --- !u!1 &1386042530
 GameObject:
   m_ObjectHideFlags: 0

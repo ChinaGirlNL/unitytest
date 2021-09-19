@@ -15,11 +15,11 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha4))
+        if (Input.GetKey(KeyCode.J))
         {
             transform.Rotate(Vector3.down * Time.deltaTime * rotation_speed);
         }
-        if (Input.GetKey(KeyCode.Alpha6))
+        if (Input.GetKey(KeyCode.L))
         {
             transform.Rotate(Vector3.up * Time.deltaTime * rotation_speed);
         }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject door;
+    private int currentLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +24,19 @@ public class GameManager : MonoBehaviour
     {
         Scene escaperoom = SceneManager.GetActiveScene();
         SceneManager.LoadScene(escaperoom.name);
+    }
+
+    public void openDoor(int levelCondition)
+    {
+        currentLevel = levelCondition;
+        door.SetActive(false);
+    }
+
+    public void closeDoor(int levelCondition)
+    {
+        if (currentLevel == levelCondition)
+        {
+            door.SetActive(true);
+        }
     }
 }
