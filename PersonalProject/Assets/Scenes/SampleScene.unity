@@ -1677,7 +1677,9 @@ MonoBehaviour:
   door: {fileID: 1598549623}
   mustBeHeld: 1
   isActivated: 0
+  sequence: 
   longHoldTime: 1
+  correctSequence: .-..
 --- !u!1 &1386042530
 GameObject:
   m_ObjectHideFlags: 0
