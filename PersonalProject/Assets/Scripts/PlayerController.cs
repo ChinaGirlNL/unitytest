@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     private GameObject focalPoint;
     private GameManager gameManagerScript;
 
-    public HeldObject heldObject;
+    public GameObject heldObject;
+    public HeldObject heldObjectScript;
+    private bool blockMovements = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,11 @@ public class PlayerController : MonoBehaviour
     }
     void MovePlayer()
     {
+        if (blockMovements)
+        {
+            playerRb.velocity = Vector3.zero;
+            return;
+        }
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
 
@@ -45,9 +52,31 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (heldObject == null)
         {
-            heldObject.disableHold();
+            return;
+        }
+
+        if (Input.GetKey(KeyCode.E) && !blockMovements)
+        {
+            heldObjectScript.disableHold();
+            heldObject = null;
+            heldObjectScript = null;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Book bookScript = heldObject.GetComponent<Book>();
+            if (bookScript != null)
+            {
+                bookScript.ToggleRead();
+                blockMovements = !blockMovements;
+            }
+            TVRemote remoteScript = heldObject.GetComponent<TVRemote>();
+            if (remoteScript != null)
+            {
+                remoteScript.toggleRemote();
+                blockMovements = !blockMovements;
+            }
         }
     }
 

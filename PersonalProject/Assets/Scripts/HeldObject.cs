@@ -9,8 +9,8 @@ public class HeldObject : MonoBehaviour
 
     private GameObject player;
     private Rigidbody objectRb;
-    public Vector3 offset;
-    public int speed;
+    public Vector3 offset = new Vector3(0, -3, 0);
+    public int speed = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,8 @@ public class HeldObject : MonoBehaviour
             if(Mathf.RoundToInt(direction[1]) == -1)
             {
                 enableHold();
-                player.GetComponent<PlayerController>().heldObject = this;
+                player.GetComponent<PlayerController>().heldObject = gameObject;
+                player.GetComponent<PlayerController>().heldObjectScript = this;
             }
         }
     }
