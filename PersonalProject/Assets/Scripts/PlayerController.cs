@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public HeldObject heldObjectScript;
     private bool blockMovements = false;
 
+    public int maxChannels = 10;
+    public Texture[] videos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,12 +72,6 @@ public class PlayerController : MonoBehaviour
             if (bookScript != null)
             {
                 bookScript.ToggleRead();
-                blockMovements = !blockMovements;
-            }
-            TVRemote remoteScript = heldObject.GetComponent<TVRemote>();
-            if (remoteScript != null)
-            {
-                remoteScript.toggleRemote();
                 blockMovements = !blockMovements;
             }
         }
