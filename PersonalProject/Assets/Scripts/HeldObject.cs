@@ -7,10 +7,20 @@ public class HeldObject : MonoBehaviour
     //0 means is not being held, 1 means it's moving towards the player, 2 means it's being held
     public int isBeingHeld; //change to private later
 
-    private GameObject player;
-    private Rigidbody objectRb;
+    protected GameObject player;
+    public Rigidbody objectRb;
     public Vector3 offset = new Vector3(0, -3, 0);
     public int speed = 20;
+
+    public virtual void onHold()
+    {
+
+    }
+
+    public virtual void onRelease()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,15 +41,19 @@ public class HeldObject : MonoBehaviour
     
     public void enableHold()
     {
+        player.GetComponent<PlayerController>().heldObject = gameObject;
+        player.GetComponent<PlayerController>().heldObjectScript = this;
         isBeingHeld = 1;
         objectRb.position = player.transform.position + offset;
         objectRb.useGravity = false;
+        onHold();
     }
 
     public void disableHold()
     {
         isBeingHeld = 0;
         objectRb.useGravity = true;
+        onRelease();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -47,13 +61,11 @@ public class HeldObject : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Player"))
         {
-            Vector3 direction = collision.GetContact(0).normal;
-            Debug.Log(direction);
-            if(Mathf.RoundToInt(direction[1]) == -1)
+            //Vector3 direction = collision.GetContact(0).normal;
+            //if(Mathf.RoundToInt(direction[1]) == -1)
             {
                 enableHold();
-                player.GetComponent<PlayerController>().heldObject = gameObject;
-                player.GetComponent<PlayerController>().heldObjectScript = this;
+                
             }
         }
     }
