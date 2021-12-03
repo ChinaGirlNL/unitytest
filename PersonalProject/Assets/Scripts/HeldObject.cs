@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HeldObject : MonoBehaviour
 {
-    //0 means is not being held, 1 means it's moving towards the player, 2 means it's being held
-    public int isBeingHeld; //change to private later
+    public bool isBeingHeld; //change to private later
 
     protected GameObject player;
     public Rigidbody objectRb;
@@ -32,7 +31,7 @@ public class HeldObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBeingHeld == 0)
+        if (isBeingHeld == false)
         {
             return;
         }
@@ -43,7 +42,7 @@ public class HeldObject : MonoBehaviour
     {
         player.GetComponent<PlayerController>().heldObject = gameObject;
         player.GetComponent<PlayerController>().heldObjectScript = this;
-        isBeingHeld = 1;
+        isBeingHeld = true;
         objectRb.position = player.transform.position + offset;
         objectRb.useGravity = false;
         onHold();
@@ -51,7 +50,7 @@ public class HeldObject : MonoBehaviour
 
     public void disableHold()
     {
-        isBeingHeld = 0;
+        isBeingHeld = false;
         objectRb.useGravity = true;
         onRelease();
     }
