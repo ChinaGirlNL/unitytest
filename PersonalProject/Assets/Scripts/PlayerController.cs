@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Finish"))
         {
-            gameManagerScript.ResetEscaperoom();
+            gameManagerScript.onComplete();
         }
     }
 }

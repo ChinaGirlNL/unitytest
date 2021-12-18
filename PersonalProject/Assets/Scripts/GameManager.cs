@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SaveLoad.Load();
     }
 
     // Update is called once per frame
@@ -38,5 +38,16 @@ public class GameManager : MonoBehaviour
         {
             door.SetActive(true);
         }
+    }
+
+    public void onComplete()
+    {
+        Progress.current.hasCompletedLevel[currentLevel] = true;
+        ResetEscaperoom();
+    }
+
+    public void OnDestroy()
+    {
+        SaveLoad.Save();
     }
 }
