@@ -6,8 +6,9 @@ using UnityEngine;
 public class Progress
 {
     public static Progress current;
-    public static int levelCount;
+    public static int levelCount = 5;
     public List<bool> hasCompletedLevel = new List<bool>();
+    public int completionValue = 0;
     
     public Progress()
     {

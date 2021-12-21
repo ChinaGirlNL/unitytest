@@ -7,13 +7,11 @@ using UnityEngine;
 
 public static class SaveLoad
 {
-    public static Progress savedGame;
     public static void Save() //Reads current game progress from the current game
     {
-        savedGame = Progress.current;
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
-        bf.Serialize(file, savedGame);
+        bf.Serialize(file, Progress.current);
         file.Close();
     }
     public static void Load() //Reads previous game progress from a file
@@ -22,9 +20,13 @@ public static class SaveLoad
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-            savedGame = (Progress)bf.Deserialize(file);
+            Progress.current = (Progress)bf.Deserialize(file);
             file.Close();
-            Progress.current = savedGame;
+        }
+        else
+        {
+            Progress.current = new Progress();
+            Save();
         }
     }
 }

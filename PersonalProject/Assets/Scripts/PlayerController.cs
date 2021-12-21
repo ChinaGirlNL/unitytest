@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject heldObject;
     public HeldObject heldObjectScript;
-    private bool blockMovements = false;
+    public bool blockMovements = false;
 
     public int maxChannels = 10;
     public Texture[] videos;
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         Interact();
+        TestForUI();
     }
     void MovePlayer()
     {
@@ -82,6 +83,19 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Finish"))
         {
             gameManagerScript.onComplete();
+        }
+        if (other.CompareTag("Upper Limit"))
+        {
+            gameManagerScript.currentLevel = 4;
+            gameManagerScript.onComplete();
+        }
+    }
+
+    private void TestForUI()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseScreenScript.instance.openUI();
         }
     }
 }

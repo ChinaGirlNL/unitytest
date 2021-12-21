@@ -15,8 +15,7 @@ public class TVRemote : HeldObject
     public string sequence;
     public string correctSequence = "8146";
 
-    public float keyCooldown = 0.1f;
-    private float lastTime;
+    private KeyCode lastKey;
 
     public override void onHold()
     {
@@ -32,11 +31,11 @@ public class TVRemote : HeldObject
     {
         Event e = Event.current;
 
-        if (e.isKey && isBeingHeld && Time.time - lastTime > keyCooldown)
+        if (e.isKey && isBeingHeld)
         {
-            lastTime = Time.time;
-            if (e.keyCode >= KeyCode.Keypad0 && e.keyCode <= KeyCode.Keypad9)
+            if (e.keyCode >= KeyCode.Keypad0 && e.keyCode <= KeyCode.Keypad9 && lastKey != e.keyCode)
             {
+                lastKey = e.keyCode;
                 int x = e.keyCode - KeyCode.Keypad0;
                 TV.clip = videos[x];
                 sequence += x;

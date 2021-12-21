@@ -45,7 +45,7 @@ public class ButtonScript : MonoBehaviour
     {
         if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Object")) && isActivated)
         {
-            gameManagerScript.closeDoor(1);
+            gameManagerScript.closeDoor();
             transform.Translate(Vector3.up * (GetComponent<BoxCollider>().size.y / 2));
             isActivated = false;
 

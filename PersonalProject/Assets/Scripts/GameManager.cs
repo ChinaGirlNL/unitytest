@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public GameObject door;
-    private int currentLevel;
+    public int currentLevel;
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         SaveLoad.Load();
     }
 
@@ -32,17 +34,18 @@ public class GameManager : MonoBehaviour
         door.SetActive(false);
     }
 
-    public void closeDoor(int levelCondition)
+    public void closeDoor()
     {
-        if (currentLevel == levelCondition)
-        {
-            door.SetActive(true);
-        }
+        door.SetActive(true);
     }
 
     public void onComplete()
     {
-        Progress.current.hasCompletedLevel[currentLevel] = true;
+        if (!Progress.current.hasCompletedLevel[currentLevel - 1])
+        {
+            Progress.current.completionValue++;
+            Progress.current.hasCompletedLevel[currentLevel - 1] = true;
+        }
         ResetEscaperoom();
     }
 
