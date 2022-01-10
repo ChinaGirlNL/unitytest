@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Test
+  m_text: TV Guide
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3617,7 +3617,6 @@ MonoBehaviour:
   TV: {fileID: 648679612}
   sequence: 
   correctSequence: 8146
-  keyCooldown: 0.1
 --- !u!65 &1459538580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3848,7 +3847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ed56079bcf7294d47b93db387b14c6d5, type: 3}
+  m_Texture: {fileID: 2800000, guid: 547b77bb640f34643afed2fd3337d384, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3876,7 +3875,6 @@ GameObject:
   - component: {fileID: 1677051296}
   - component: {fileID: 1677051295}
   - component: {fileID: 1677051294}
-  - component: {fileID: 1677051299}
   - component: {fileID: 1677051300}
   m_Layer: 0
   m_Name: TV Guide
@@ -3897,12 +3895,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe5bd67366912847afa4b3d81a2f2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBeingHeld: 0
+  objectRb: {fileID: 0}
+  offset: {x: 0, y: -3, z: 0}
+  speed: 20
   UIText: {fileID: 639557910}
   UIImage: {fileID: 1625831186}
   UIButton: {fileID: 1017454630}
   UI: {fileID: 905237408}
-  text_contents: This is a test.
-  image_contents: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
+  text_contents: Our signal for today
+  image_contents: {fileID: 2800000, guid: 547b77bb640f34643afed2fd3337d384, type: 3}
 --- !u!65 &1677051295
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3979,22 +3981,6 @@ Transform:
   m_Father: {fileID: 880121109}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1677051299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677051293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 194455bb998372b4b8a6a09af278c007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBeingHeld: 0
-  objectRb: {fileID: 0}
-  offset: {x: 0, y: -3, z: 0}
-  speed: 20
 --- !u!54 &1677051300
 Rigidbody:
   m_ObjectHideFlags: 0

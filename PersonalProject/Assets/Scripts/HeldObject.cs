@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeldObject : MonoBehaviour
 {
-    public bool isBeingHeld; //change to private later
+    public bool isBeingHeld;
 
     protected GameObject player;
     public Rigidbody objectRb;
@@ -64,7 +64,6 @@ public class HeldObject : MonoBehaviour
             //if(Mathf.RoundToInt(direction[1]) == -1)
             {
                 enableHold();
-                
             }
         }
     }

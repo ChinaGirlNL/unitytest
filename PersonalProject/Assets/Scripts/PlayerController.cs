@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Book bookScript = heldObject.GetComponent<Book>();
+            Book bookScript = heldObjectScript as Book;
             if (bookScript != null)
             {
                 bookScript.ToggleRead();

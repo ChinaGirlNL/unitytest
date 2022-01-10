@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Book : MonoBehaviour
+public class Book : HeldObject
 {
     public TextMeshProUGUI UIText;
     public RawImage UIImage;
@@ -13,18 +13,6 @@ public class Book : MonoBehaviour
 
     public string text_contents;
     public Texture image_contents;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ReadBook()
     {
