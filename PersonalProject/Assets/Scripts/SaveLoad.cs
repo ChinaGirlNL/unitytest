@@ -11,22 +11,33 @@ public static class SaveLoad
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
+        Debug.Log(Application.persistentDataPath);
         bf.Serialize(file, Progress.current);
         file.Close();
     }
     public static void Load() //Reads previous game progress from a file
     {
-        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+        try
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-            Progress.current = (Progress)bf.Deserialize(file);
-            file.Close();
+            if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+                Progress.current = (Progress)bf.Deserialize(file);
+                file.Close();
+            }
+            else
+            {
+                Progress.current = new Progress();
+                Save();
+            }
         }
-        else
+        catch
         {
             Progress.current = new Progress();
             Save();
+            Debug.Log("SavedGames.gd has been reset.");
         }
+        
     }
 }

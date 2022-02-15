@@ -27,7 +27,29 @@ public class TVRemote : HeldObject
         UI.SetActive(false);
     }
 
-    public void OnGUI()
+    public override void testForInput()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            KeyCode key = KeyCode.Alpha1 + i;
+            if (Input.GetKeyDown(key))
+            {
+                TV.clip = videos[i];
+                sequence += (i + 1);
+
+                if (sequence.Length > correctSequence.Length)
+                {
+                    sequence = sequence.Remove(0, 1);
+                }
+                if (sequence == correctSequence)
+                {
+                    gameManagerScript.openDoor(3);
+                }
+            }
+        }
+    }
+
+    /*public void OnGUI()
     {
         Event e = Event.current;
 
@@ -50,5 +72,5 @@ public class TVRemote : HeldObject
                 }
             }
         }
-    }
+    }*/
 }

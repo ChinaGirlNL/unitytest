@@ -21,6 +21,11 @@ public class HeldObject : MonoBehaviour
 
     }
 
+    public virtual void testForInput()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +41,7 @@ public class HeldObject : MonoBehaviour
             return;
         }
         objectRb.position = player.transform.position + offset;
+        testForInput();
     }
     
     public void enableHold()
