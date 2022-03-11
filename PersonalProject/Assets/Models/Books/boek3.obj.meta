@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: f233133d3e8373949837276053f40857
+guid: 2f56aba2f6c3ed042a0fe30189fddf73
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 8_Torus_NoneMat
+    second: {fileID: 2100000, guid: f7d5e85079ca03a429dfb5d384e53108, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kaft_Cube.001_Material.001Mat
+    second: {fileID: 2100000, guid: c68b0fa33dd136a41b41ae944a7ddcd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: papier_Cube.002_Material.002Mat
+    second: {fileID: 2100000, guid: d21fc5886786e6545a783dcfd76b9b47, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

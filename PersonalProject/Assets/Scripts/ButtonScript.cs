@@ -34,7 +34,7 @@ public class ButtonScript : MonoBehaviour
         if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Object")) && !isActivated)
         {
             gameManagerScript.openDoor(1);
-            transform.Translate(Vector3.down * (GetComponent<BoxCollider>().size.y / 2));
+            transform.Translate(Vector3.down * (GetComponent<BoxCollider>().size.y / 4));
             isActivated = true;
 
             buttonDownTime = Time.time;
@@ -46,7 +46,7 @@ public class ButtonScript : MonoBehaviour
         if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Object")) && isActivated)
         {
             gameManagerScript.closeDoor();
-            transform.Translate(Vector3.up * (GetComponent<BoxCollider>().size.y / 2));
+            transform.Translate(Vector3.up * (GetComponent<BoxCollider>().size.y / 4));
             isActivated = false;
 
             float heldTime = Time.time - buttonDownTime;
