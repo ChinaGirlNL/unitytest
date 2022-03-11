@@ -32,7 +32,8 @@ public class TVRemote : HeldObject
         for (int i = 0; i < 9; i++)
         {
             KeyCode key = KeyCode.Alpha1 + i;
-            if (Input.GetKeyDown(key))
+            KeyCode key2 = KeyCode.Keypad1 + i;
+            if (Input.GetKeyDown(key) || Input.GetKeyDown(key2))
             {
                 TV.clip = videos[i];
                 sequence += (i + 1);
